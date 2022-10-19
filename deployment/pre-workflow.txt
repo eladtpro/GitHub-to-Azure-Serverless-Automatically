@@ -1,8 +1,8 @@
 name: CI-Dev
 
 env:
-  AZURE_WEBAPP_NAME: frankfuncdemo2   # set this to your application's name
-  AZURE_GROUP_NAME: frankfuncdemo2
+  AZURE_WEBAPP_NAME: serverlessfuncdemo2   # set this to your application's name
+  AZURE_GROUP_NAME: serverlessfuncdemo2
 
 on: [push]
 

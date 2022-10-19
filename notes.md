@@ -1,4 +1,4 @@
 
 
 
-az ad sp create-for-rbac --name "frankfuncdemo" --role contributor --scopes /subscriptions/{subscription-id} --sdk-auth
+az ad sp create-for-rbac --name "serverlessfuncdemo" --role contributor --scopes /subscriptions/{subscription-id} --sdk-auth
