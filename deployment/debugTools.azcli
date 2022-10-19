@@ -4,13 +4,13 @@
 # It's great when use in VSCode with the Azure CLI extension
 
 #Create a Resource Group
-az group create -n serverlessfrank-Test -l eastus
+az group create -n serverless-Test -l eastus
 
 # validate command
-az group deployment validate -g serverlessfrank-Test --template-file "deployment/deployAzure.json" --verbose 
+az group deployment validate -g serverless-Test --template-file "deployment/deployAzure.json" --verbose 
 
 # validate with Parameter file
-az group deployment validate -g serverlessfrank-Test --template-file "deployment/deployAzure.json" --parameters "deployment/deployAzure.parameters.json"  --verbose 
+az group deployment validate -g serverless-Test --template-file "deployment/deployAzure.json" --parameters "deployment/deployAzure.parameters.json"  --verbose 
 
 # deploy it
-az group deployment create -n Test1 -g serverlessfrank-Test --template-file "deployment/deployAzure.json" --parameters "deployment/deployAzure.parameters.json"  --verbose 
+az group deployment create -n Test1 -g serverless-Test --template-file "deployment/deployAzure.json" --parameters "deployment/deployAzure.parameters.json"  --verbose 
