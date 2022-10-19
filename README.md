@@ -32,4 +32,4 @@ Detailed explanations of each demonstration associated with this presentation ca
 
 ## Feedback / Questions ?
 
-Reach out on social media or use the GitHub [issues](https://github.com/FBoucher/GitHub-to-Azure-Serverless-Automatically/issues)
+Reach out on social media or use the GitHub [issues](https://github.com/eladtpro/GitHub-to-Azure-Serverless-Automatically/issues)

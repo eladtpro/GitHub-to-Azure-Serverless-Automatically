@@ -18,7 +18,7 @@
         },
         "GitHubURL": {
            "type": "string",
-           "defaultValue": "https://github.com/FBoucher/GitHub-to-Azure-Serverless-Automatically.git",
+           "defaultValue": "https://github.com/eladtpro/GitHub-to-Azure-Serverless-Automatically.git",
            "metadata": {
                 "description": "The URL of GitHub (ending by .git)"
             }
