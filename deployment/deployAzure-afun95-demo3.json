@@ -33,10 +33,9 @@
     },
     "variables": {
         "resourceGroup": "[parameters('ResourceGroup')]",
-        "suffix": "[substring(toLower(uniqueString(resourceGroup().id, resourceGroup().location)),0,5)]",
+        "suffix": "-arm",
         "funcAppName": "[toLower(concat(parameters('BaseName'), 'function', variables('suffix')))]",
-        "funcStorageName": "stserverlessfunctions",
-        "serverFarmName": "[concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),14)), '-srv-', variables('suffix'))]",
+        "funcStorageName": "[tolower(concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),16)), 'stg', variables('suffix')))]",        "serverFarmName": "[concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),14)), '-srv-', variables('suffix'))]",
         "repoURL": "[parameters('GitHubURL')]",
         "functionProjectFolder": "demos/functionapp-demo",
         "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('funcStorageName'))]"
