@@ -29,20 +29,13 @@
             "metadata": {
                 "description": "The URL of GitHub (ending by .git)"
             }
-        },
-        "FunctionStorageName": {
-            "type": "string",
-            "defaultValue": "stserverlessfunctions",
-            "metadata": {
-                "description": "The URL of GitHub (ending by .git)"
-            }
         }
     },
     "variables": {
         "resourceGroup": "[parameters('ResourceGroup')]",
         "suffix": "[substring(toLower(uniqueString(resourceGroup().id, resourceGroup().location)),0,5)]",
         "funcAppName": "[toLower(concat(parameters('BaseName'), 'function', variables('suffix')))]",
-        "funcStorageName": "[parameters('FunctionStorageName')]",
+        "funcStorageName": "stserverlessfunctions",
         "serverFarmName": "[concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),14)), '-srv-', variables('suffix'))]",
         "repoURL": "[parameters('GitHubURL')]",
         "functionProjectFolder": "demos/functionapp-demo",
