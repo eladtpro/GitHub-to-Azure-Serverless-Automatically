@@ -2,11 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "baseName": {
-            "defaultValue": "afun95demo",
+        "BaseName": {
+            "defaultValue": "serverless-arm",
             "type": "string",
             "metadata": {
                 "description": "Name use as base-template to named the resources deployed in Azure."
+            }
+        },
+        "ResourceGroup": {
+            "defaultValue": "serverless-arm",
+            "type": "string",
+            "metadata": {
+                "description": "Parent resource group."
             }
         },
         "GitHubBranch": {
@@ -40,14 +47,14 @@
     },
     "variables": {
         "suffix": "[substring(toLower(uniqueString(resourceGroup().id, resourceGroup().location)),0,5)]",
-        "funcAppName": "[toLower(concat(parameters('baseName'), 'function', variables('suffix')))]",
-        "funcAppFinalName": "[toLower(concat('final',parameters('baseName'), variables('suffix')))]",
-        "funcStorageName": "[tolower(concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),16)), 'stg', variables('suffix')))]",
-        "serverFarmName": "[concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),14)), '-srv-', variables('suffix'))]",
+        "funcAppName": "[toLower(concat(parameters('BaseName'), 'function', variables('suffix')))]",
+        "funcAppFinalName": "[toLower(concat('final',parameters('BaseName'), variables('suffix')))]",
+        "funcStorageName": "[tolower(concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),16)), 'stg', variables('suffix')))]",
+        "serverFarmName": "[concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),14)), '-srv-', variables('suffix'))]",
         "repoURL": "[parameters('GitHubURL')]",
         "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('funcStorageName'))]",
-        "workflowName": "[toLower(concat(parameters('baseName'), 'workflow', variables('suffix')))]",
-        "workflowFinalName": "[toLower(concat('Final', parameters('baseName'), 'workflow', variables('suffix')))]",
+        "workflowName": "[toLower(concat(parameters('BaseName'), 'workflow', variables('suffix')))]",
+        "workflowFinalName": "[toLower(concat('Final', parameters('BaseName'), 'workflow', variables('suffix')))]",
         "connections_onedrive_externalid": "[concat(subscription().Id, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/onedrive')]",
         "functionProjectFolder": "demos/functionapp-demo",
         "finalAzFuncHttpTriggerID": "[concat(subscription().Id, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Web/sites/', variables('funcAppFinalName'), '/functions/SimpleHttpTrigger')]"
@@ -64,8 +71,8 @@
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('funcStorageName'))]"
             ],
             "tags": {
-                "ExpireOn": "[parameters('ExpireOn')]",
-                "Owner": "[parameters('OwnerName')]"
+                "Customer": "Microsoft",
+                "Type": "Demo"
             },
             "properties": {
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverFarmName'))]",
@@ -90,7 +97,7 @@
                         },
                         {
                             "name": "FUNCTIONS_EXTENSION_VERSION",
-                            "value": "~2"
+                            "value": "~4"
                         },
                         {
                             "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -191,9 +198,8 @@
             "name": "[variables('funcStorageName')]",
             "location": "[resourceGroup().location]",
             "tags": {
-                "displayName": "funStorageName",
-                "ExpireOn": "[parameters('ExpireOn')]",
-                "Owner": "[parameters('OwnerName')]"
+                "Customer": "Microsoft",
+                "Type": "Demo"
             },
             "sku": {
                 "name": "Standard_LRS"
@@ -210,8 +216,8 @@
                 "tier": "Dynamic"
             },
             "tags": {
-                "ExpireOn": "[parameters('ExpireOn')]",
-                "Owner": "[parameters('OwnerName')]"
+                "Customer": "Microsoft",
+                "Type": "Demo"
             },
             "properties": {
                 "name": "[variables('serverFarmName')]",

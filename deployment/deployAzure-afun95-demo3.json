@@ -35,7 +35,7 @@
         "resourceGroup": "[parameters('ResourceGroup')]",
         "suffix": "-arm",
         "funcAppName": "[toLower(concat(parameters('BaseName'), 'function', variables('suffix')))]",
-        "funcStorageName": "[tolower(concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),16)), 'stg', variables('suffix')))]",        "serverFarmName": "[concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),14)), '-srv-', variables('suffix'))]",
+        "funcStorageName": "[tolower(concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),16)), 'stg', variables('suffix')))]",        "serverFarmName": "[concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),14)), '-srv-', variables('suffix'))]",
         "repoURL": "[parameters('GitHubURL')]",
         "functionProjectFolder": "demos/functionapp-demo",
         "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('funcStorageName'))]"
@@ -51,6 +51,10 @@
                 "[resourceId('Microsoft.Web/serverfarms',variables('serverFarmName'))]",
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('funcStorageName'))]"
             ],
+            "tags": {
+                "Customer": "Microsoft",
+                "Type": "Demo"
+            },
             "properties": {
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverFarmName'))]",
                 "siteConfig": {
@@ -90,6 +94,7 @@
                         }
                     ]
                 },
+                "location": "[resourceGroup().location]",
                 "clientAffinityEnabled": false,
                 "reserved": false
             },
@@ -117,7 +122,8 @@
             "name": "[variables('funcStorageName')]",
             "location": "[resourceGroup().location]",
             "tags": {
-                "displayName": "funStorageName"
+                "Customer": "Microsoft",
+                "Type": "Demo"
             },
             "sku": {
                 "name": "Standard_LRS"
@@ -132,6 +138,10 @@
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic"
+            },
+            "tags": {
+                "Customer": "Microsoft",
+                "Type": "Demo"
             },
             "properties": {
                 "name": "[variables('serverFarmName')]",
