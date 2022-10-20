@@ -1,4 +1,4 @@
-name: CI-Dev
+name: Deploy ARM Template
 
 env:
   AZURE_WEBAPP_NAME: serverlessfuncdemo2   # set this to your application's name
