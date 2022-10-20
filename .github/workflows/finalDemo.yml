@@ -2,7 +2,7 @@ name: CI-Dev
 
 env:
   AZURE_WEBAPP_NAME: serverlessfuncdemo2   # set this to your application's name
-  AZURE_GROUP_NAME: serverlessfuncdemo2
+  AZURE_GROUP_NAME: serverless
 
 on: [push]
 
@@ -32,8 +32,8 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+   #    az group create -n ${{ env.AZURE_GROUP_NAME }} -l northeurope OMIT RESOURCE GROUP CREATION
     - run: |
-        az group create -n ${{ env.AZURE_GROUP_NAME }} -l eastus 
         az group deployment create -n ghaction -g ${{ env.AZURE_GROUP_NAME }} --template-file deployment/deployAzure.json  
 
 
