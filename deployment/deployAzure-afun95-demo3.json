@@ -33,7 +33,7 @@
     },
     "variables": {
         "resourceGroup": "[parameters('ResourceGroup')]",
-        "suffix": "-arm",
+        "suffix": "arm",
         "funcAppName": "[toLower(concat(parameters('BaseName'), 'function', variables('suffix')))]",
         "funcStorageName": "[tolower(concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),16)), 'stg', variables('suffix')))]",        "serverFarmName": "[concat(substring(parameters('BaseName'), 0, min(length(parameters('BaseName')),14)), '-srv-', variables('suffix'))]",
         "repoURL": "[parameters('GitHubURL')]",
