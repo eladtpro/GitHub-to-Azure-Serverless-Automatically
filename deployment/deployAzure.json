@@ -10,7 +10,7 @@
             }
         },
         "ResourceGroup": {
-            "defaultValue": "serverless-arm",
+            "defaultValue": "serv",
             "type": "string",
             "metadata": {
                 "description": "Parent resource group."
