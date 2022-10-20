@@ -4,7 +4,7 @@
 # It's great when use in VSCode with the Azure CLI extension
 
 #Create a Resource Group
-az group create -n serverless-Test -l eastus
+az group create -n serverless-Test -l northeurope
 
 # validate command
 az group deployment validate -g serverless-Test --template-file "deployment/deployAzure.json" --verbose 
