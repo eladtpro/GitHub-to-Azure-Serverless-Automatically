@@ -129,6 +129,9 @@ Creating, updating and using Azure Function is that easy. You are now ready to c
 
 > 💡 You must have completed the [deployment](../deployment/README.md) before attempting to do the demo.
 
+>az ad sp create-for-rbac --name "myApp" --role contributor \
+                                --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
+                                --sdk-auth
 In this demo you will deploy an Azure Function directly from the GitHub using Azure Resource Manager (ARM) template.
 
 > Switch to : Browser Tab - GitHub - demo afun59 page
